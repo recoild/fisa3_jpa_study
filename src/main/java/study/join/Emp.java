@@ -1,5 +1,6 @@
 package study.join;
 
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,20 +20,32 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(name = "emp_seq", sequenceName = "emp_seq_id", allocationSize = 50,
-        initialValue = 1)
 public class Emp {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emp_seq")
-    private long id;
-    
-    @NonNull
+    @Column(name = "EMPNO")
+    private long empno;
+
+    @Column(name = "ENAME", length = 20)
     private String ename;
-    
-    @OneToOne
-    @JoinColumn(name="dept_id")
-    @NonNull
-    private Dept deptId;
+
+    @Column(name = "JOB", length = 20)
+    private String job;
+
+    @Column(name = "MGR")
+    private long mgr;
+
+    @Column(name = "HIREDATE", length = 20)
+    private LocalDate hiredate;
+
+    @Column(name = "SAL")
+    private long sal;
+
+    @Column(name = "COMM")
+    private long comm;
+
+    @ManyToOne
+    @JoinColumn(name = "DEPTNO", nullable = true)
+    private Dept dept;
 }

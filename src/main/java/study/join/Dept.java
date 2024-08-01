@@ -1,32 +1,32 @@
 package study.join;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(name = "dept_seq", sequenceName = "dept_seq_id", allocationSize = 50,
-        initialValue = 1)
 public class Dept {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dept_seq")
-    private long id;
-    
-    @NonNull
+    @Column(name = "DEPTNO")
+    private long deptno;
+
+    @Column(name = "DNAME", length = 20)
     private String dname;
-    
-    @NonNull
+
+    @Column(name = "LOC", length = 20)
     private String loc;
+
+    @OneToMany(mappedBy = "dept")
+    private Set<Emp> empDatas = new HashSet<>();
 }
