@@ -1,4 +1,4 @@
-## [깃허브 링크](https://github.com/recoild/fisa3_step11_myArt)
+## 링크:  [깃허브 링크](https://github.com/recoild/fisa3_step11_myArt)
 
 # EMP, DEPT 테이블 각각에 대해 CRUD 테스트 코드 작성
 
